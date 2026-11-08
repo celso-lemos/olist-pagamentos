@@ -1,0 +1,17 @@
+# Dados locais e bancos gerados
+data/raw/
+*.duckdb
+*.duckdb.wal
+
+# Ambiente Python e arquivos de testes
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Configurações locais e credenciais
+.env
+.codex/
+.streamlit/secrets.toml
