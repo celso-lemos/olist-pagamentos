@@ -1,0 +1,321 @@
+{
+  "source": "Brazilian E-Commerce Public Dataset by Olist",
+  "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "license": "CC BY-NC-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "scope": "Todos os status; indicadores agregados; mes da compra",
+  "tables": {
+    "installments_by_value": [
+      {
+        "band_order": 1,
+        "value_band": "Ate R$ 100",
+        "credit_card_orders": 34859,
+        "installment_orders": 17452,
+        "installment_rate_pct": 50.064545741415415,
+        "avg_order_payment": 60.98164405175134
+      },
+      {
+        "band_order": 2,
+        "value_band": "Acima de R$ 100 ate R$ 200",
+        "credit_card_orders": 25111,
+        "installment_orders": 19260,
+        "installment_rate_pct": 76.6994544223647,
+        "avg_order_payment": 142.31878101230535
+      },
+      {
+        "band_order": 3,
+        "value_band": "Acima de R$ 200 ate R$ 500",
+        "credit_card_orders": 13000,
+        "installment_orders": 11213,
+        "installment_rate_pct": 86.25384615384615,
+        "avg_order_payment": 290.55292076923075
+      },
+      {
+        "band_order": 4,
+        "value_band": "Acima de R$ 500",
+        "credit_card_orders": 3535,
+        "installment_orders": 3245,
+        "installment_rate_pct": 91.7963224893918,
+        "avg_order_payment": 922.0466110325318
+      }
+    ],
+    "payment_combinations": [
+      {
+        "payment_methods": "credit_card",
+        "payment_method_count": 1,
+        "order_count": 74259,
+        "total_payment_value": "12397278.59",
+        "share_of_paid_orders_pct": 74.67719227674979
+      },
+      {
+        "payment_methods": "boleto",
+        "payment_method_count": 1,
+        "order_count": 19784,
+        "total_payment_value": "2869361.27",
+        "share_of_paid_orders_pct": 19.89541432019308
+      },
+      {
+        "payment_methods": "credit_card + voucher",
+        "payment_method_count": 2,
+        "order_count": 2245,
+        "total_payment_value": "338717.37",
+        "share_of_paid_orders_pct": 2.257642799678198
+      },
+      {
+        "payment_methods": "voucher",
+        "payment_method_count": 1,
+        "order_count": 1621,
+        "total_payment_value": "185422.28",
+        "share_of_paid_orders_pct": 1.6301287208366855
+      },
+      {
+        "payment_methods": "debit_card",
+        "payment_method_count": 1,
+        "order_count": 1527,
+        "total_payment_value": "217939.79",
+        "share_of_paid_orders_pct": 1.5355993563958166
+      },
+      {
+        "payment_methods": "not_defined",
+        "payment_method_count": 1,
+        "order_count": 3,
+        "total_payment_value": "0.00",
+        "share_of_paid_orders_pct": 0.0030168946098149637
+      },
+      {
+        "payment_methods": "credit_card + debit_card",
+        "payment_method_count": 2,
+        "order_count": 1,
+        "total_payment_value": "152.82",
+        "share_of_paid_orders_pct": 0.001005631536604988
+      }
+    ],
+    "monthly_payments": [
+      {
+        "purchase_month": "2016-09-01",
+        "order_count": 4,
+        "paid_orders": 3,
+        "credit_card_orders": 3,
+        "installment_orders": 2,
+        "installment_rate_pct": 66.66666666666667,
+        "total_payment_value": "252.24"
+      },
+      {
+        "purchase_month": "2016-10-01",
+        "order_count": 324,
+        "paid_orders": 324,
+        "credit_card_orders": 253,
+        "installment_orders": 198,
+        "installment_rate_pct": 78.26086956521739,
+        "total_payment_value": "59090.48"
+      },
+      {
+        "purchase_month": "2016-12-01",
+        "order_count": 1,
+        "paid_orders": 1,
+        "credit_card_orders": 1,
+        "installment_orders": 0,
+        "installment_rate_pct": 0.0,
+        "total_payment_value": "19.62"
+      },
+      {
+        "purchase_month": "2017-01-01",
+        "order_count": 800,
+        "paid_orders": 800,
+        "credit_card_orders": 582,
+        "installment_orders": 380,
+        "installment_rate_pct": 65.29209621993127,
+        "total_payment_value": "138488.04"
+      },
+      {
+        "purchase_month": "2017-02-01",
+        "order_count": 1780,
+        "paid_orders": 1780,
+        "credit_card_orders": 1347,
+        "installment_orders": 837,
+        "installment_rate_pct": 62.1380846325167,
+        "total_payment_value": "291908.01"
+      },
+      {
+        "purchase_month": "2017-03-01",
+        "order_count": 2682,
+        "paid_orders": 2682,
+        "credit_card_orders": 2008,
+        "installment_orders": 1342,
+        "installment_rate_pct": 66.83266932270917,
+        "total_payment_value": "449863.60"
+      },
+      {
+        "purchase_month": "2017-04-01",
+        "order_count": 2404,
+        "paid_orders": 2404,
+        "credit_card_orders": 1835,
+        "installment_orders": 1294,
+        "installment_rate_pct": 70.51771117166213,
+        "total_payment_value": "417788.03"
+      },
+      {
+        "purchase_month": "2017-05-01",
+        "order_count": 3700,
+        "paid_orders": 3700,
+        "credit_card_orders": 2833,
+        "installment_orders": 2132,
+        "installment_rate_pct": 75.25591246028945,
+        "total_payment_value": "592918.82"
+      },
+      {
+        "purchase_month": "2017-06-01",
+        "order_count": 3245,
+        "paid_orders": 3245,
+        "credit_card_orders": 2452,
+        "installment_orders": 1851,
+        "installment_rate_pct": 75.48939641109298,
+        "total_payment_value": "511276.38"
+      },
+      {
+        "purchase_month": "2017-07-01",
+        "order_count": 4026,
+        "paid_orders": 4026,
+        "credit_card_orders": 3072,
+        "installment_orders": 2330,
+        "installment_rate_pct": 75.84635416666667,
+        "total_payment_value": "592382.92"
+      },
+      {
+        "purchase_month": "2017-08-01",
+        "order_count": 4331,
+        "paid_orders": 4331,
+        "credit_card_orders": 3272,
+        "installment_orders": 2388,
+        "installment_rate_pct": 72.98288508557457,
+        "total_payment_value": "674396.32"
+      },
+      {
+        "purchase_month": "2017-09-01",
+        "order_count": 4285,
+        "paid_orders": 4285,
+        "credit_card_orders": 3274,
+        "installment_orders": 2301,
+        "installment_rate_pct": 70.28100183262065,
+        "total_payment_value": "727762.45"
+      },
+      {
+        "purchase_month": "2017-10-01",
+        "order_count": 4631,
+        "paid_orders": 4631,
+        "credit_card_orders": 3510,
+        "installment_orders": 2448,
+        "installment_rate_pct": 69.74358974358974,
+        "total_payment_value": "779677.88"
+      },
+      {
+        "purchase_month": "2017-11-01",
+        "order_count": 7544,
+        "paid_orders": 7544,
+        "credit_card_orders": 5867,
+        "installment_orders": 3982,
+        "installment_rate_pct": 67.8711436850179,
+        "total_payment_value": "1194882.80"
+      },
+      {
+        "purchase_month": "2017-12-01",
+        "order_count": 5673,
+        "paid_orders": 5673,
+        "credit_card_orders": 4363,
+        "installment_orders": 2881,
+        "installment_rate_pct": 66.03254641301857,
+        "total_payment_value": "878401.48"
+      },
+      {
+        "purchase_month": "2018-01-01",
+        "order_count": 7269,
+        "paid_orders": 7269,
+        "credit_card_orders": 5511,
+        "installment_orders": 3484,
+        "installment_rate_pct": 63.21901651242968,
+        "total_payment_value": "1115004.18"
+      },
+      {
+        "purchase_month": "2018-02-01",
+        "order_count": 6728,
+        "paid_orders": 6728,
+        "credit_card_orders": 5235,
+        "installment_orders": 3247,
+        "installment_rate_pct": 62.02483285577841,
+        "total_payment_value": "992463.34"
+      },
+      {
+        "purchase_month": "2018-03-01",
+        "order_count": 7211,
+        "paid_orders": 7211,
+        "credit_card_orders": 5674,
+        "installment_orders": 3709,
+        "installment_rate_pct": 65.36834684525908,
+        "total_payment_value": "1159652.12"
+      },
+      {
+        "purchase_month": "2018-04-01",
+        "order_count": 6939,
+        "paid_orders": 6939,
+        "credit_card_orders": 5441,
+        "installment_orders": 3440,
+        "installment_rate_pct": 63.22367211909575,
+        "total_payment_value": "1160785.48"
+      },
+      {
+        "purchase_month": "2018-05-01",
+        "order_count": 6873,
+        "paid_orders": 6873,
+        "credit_card_orders": 5475,
+        "installment_orders": 3516,
+        "installment_rate_pct": 64.21917808219177,
+        "total_payment_value": "1153982.15"
+      },
+      {
+        "purchase_month": "2018-06-01",
+        "order_count": 6167,
+        "paid_orders": 6167,
+        "credit_card_orders": 4796,
+        "installment_orders": 3127,
+        "installment_rate_pct": 65.20016680567139,
+        "total_payment_value": "1023880.50"
+      },
+      {
+        "purchase_month": "2018-07-01",
+        "order_count": 6292,
+        "paid_orders": 6292,
+        "credit_card_orders": 4738,
+        "installment_orders": 3064,
+        "installment_rate_pct": 64.66863655550866,
+        "total_payment_value": "1066540.75"
+      },
+      {
+        "purchase_month": "2018-08-01",
+        "order_count": 6512,
+        "paid_orders": 6512,
+        "credit_card_orders": 4963,
+        "installment_orders": 3217,
+        "installment_rate_pct": 64.81966552488414,
+        "total_payment_value": "1022425.32"
+      },
+      {
+        "purchase_month": "2018-09-01",
+        "order_count": 16,
+        "paid_orders": 16,
+        "credit_card_orders": 0,
+        "installment_orders": 0,
+        "installment_rate_pct": null,
+        "total_payment_value": "4439.54"
+      },
+      {
+        "purchase_month": "2018-10-01",
+        "order_count": 4,
+        "paid_orders": 4,
+        "credit_card_orders": 0,
+        "installment_orders": 0,
+        "installment_rate_pct": null,
+        "total_payment_value": "589.67"
+      }
+    ]
+  }
+}

@@ -7,7 +7,7 @@ from ingest import ROOT
 
 
 def main() -> None:
-    for script in ("ingest.py", "refine.py", "marts.py"):
+    for script in ("ingest.py", "refine.py", "marts.py", "export_marts.py"):
         print(f"\n=== Executando {script} ===", flush=True)
         subprocess.run(
             [sys.executable, str(ROOT / "src" / script)],

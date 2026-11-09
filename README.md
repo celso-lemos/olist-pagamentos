@@ -204,6 +204,27 @@ cartão parcelado e ordena os meios distintos antes de juntar aos pedidos.
 Mantém todos os status e sinaliza pedidos sem pagamento. O total pago não
 é chamado de receita de produtos e inclui todos os meios do pedido.
 
+## Dados publicados para o dashboard
+
+O pipeline também executa `src/export_marts.py`, gerando
+`data/published/dashboard.json`. Esse arquivo é versionado e contém somente
+as três tabelas agregadas da camada marts, sem pedidos ou clientes individuais.
+O banco, o ambiente virtual e os CSVs originais continuam fora do Git.
+Os indicadores derivados são publicados sob CC BY-NC-SA 4.0, com fonte e
+licença incluídas no próprio arquivo. Valores monetários são exportados como
+texto decimal para preservar os centavos; datas usam o formato ISO.
+
+Para atualizar apenas a exportação após gerar os marts:
+
+```powershell
+.\.venv\Scripts\python.exe src/export_marts.py
+```
+
+A exportação usa um snapshot das três tabelas. O arquivo final só é
+substituído após a leitura e serialização completas. Não há cálculos de
+indicadores nessa etapa, somente leitura ordenada e serialização.
+O dashboard em Streamlit será implementado na próxima etapa.
+
 ## Uso da IA e conferência
 
 - **Testes:** a IA adotou `unittest` embora o desafio exigisse `pytest`.
