@@ -243,7 +243,28 @@ Abra o endereço informado no terminal (normalmente `http://localhost:8501`).
 Use `Ctrl+C` no terminal para encerrar. O painel funciona com o arquivo
 agregado versionado, mesmo sem os dados originais e sem executar o pipeline.
 Os testes de interface usam dados fictícios e `streamlit.testing.v1.AppTest`.
-A hospedagem pública do aplicativo será preparada em uma etapa separada.
+### Publicar no Streamlit Community Cloud
+
+Com os commits enviados ao GitHub, entre em
+[share.streamlit.io](https://share.streamlit.io/) com a conta pessoal vinculada
+ao GitHub. Em **Create app**, escolha a opção de usar um repositório existente:
+
+- Repository: `celso-lemos/olist-pagamentos`
+- Branch: `main`
+- Main file path: `app.py`
+- Advanced settings: Python `3.13` (versão principal/secundária validada localmente).
+
+O serviço instala o `requirements.txt` da raiz. Não são necessários secrets,
+CSVs originais ou banco DuckDB: os indicadores já estão em
+`data/published/dashboard.json`. Confirme a disponibilidade do nome do
+subdomínio na plataforma antes de divulgar um endereço.
+
+Após **Deploy**, confira as três visões e o download do JSON. Caso haja erro,
+consulte o log da instalação/execução antes de alterar dependências.
+O endereço público só deve ser incluído aqui depois da implantação confirmada.
+Mudanças futuras no código ou nos indicadores precisam de commit e push
+para atualizar a versão hospedada. As instruções seguem a
+[documentação de implantação](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy).
 
 ## Uso da IA e conferência
 
