@@ -8,7 +8,15 @@ from ingest import DATABASE, ROOT
 def build_marts(connection: duckdb.DuckDBPyConnection) -> dict[str, int]:
     connection.execute("BEGIN TRANSACTION")
     try:
-        connection.execute((ROOT / "sql" / "marts.sql").read_text(encoding="utf-8"))
+        connection.execute("CREATE SCHEMA IF NOT EXISTS marts")
+        for filename in (
+            "01_installments_by_value.sql",
+            "02_payment_combinations.sql",
+            "03_monthly_payments.sql",
+        ):
+            connection.execute(
+                (ROOT / "sql" / "marts" / filename).read_text(encoding="utf-8")
+            )
         checks = {
             "base de cartao por faixa": """
                 SELECT coalesce(sum(credit_card_orders), 0) =

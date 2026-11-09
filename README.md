@@ -14,6 +14,16 @@ mais comuns?
 
 Licença dos dados: CC BY-NC-SA 4.0, conforme indicada no Kaggle.
 
+Créditos: Olist, publicadora do Brazilian E-Commerce Public Dataset no Kaggle.
+Este projeto tem finalidade educacional e não comercial. A licença permite
+compartilhamento e adaptação com atribuição, indicação das alterações e
+compartilhamento de adaptações sob a mesma licença:
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Os CSVs não são redistribuídos neste repositório. As análises derivadas aqui
+apresentadas são disponibilizadas sob CC BY-NC-SA 4.0. As transformações
+realizadas são conversão de tipos, consolidação e agregação de indicadores;
+os arquivos originais permanecem inalterados.
+
 Arquivos utilizados:
 - `olist_orders_dataset.csv`
 - `olist_order_payments_dataset.csv`
@@ -36,8 +46,14 @@ usa como base os pedidos que tiveram pagamento com cartão de crédito.
 
 ## Validação
 
-Testes com `unittest` e dados fictícios, executados sem depender do banco
-do projeto. Usamos a biblioteca padrão do Python, sem dependência adicional.
+Testes executados com `pytest`, usando dados fictícios e um DuckDB em memória,
+sem abrir o banco do projeto nem ler os CSVs. Os casos usam `unittest.TestCase`,
+formato coletado e executado pelo pytest. Instale as dependências de testes:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m pytest -v
+```
 
 ## Preparação e execução completa
 
@@ -46,9 +62,9 @@ Requer Python (ambiente validado com Python 3.13.13) e os dois CSVs em
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 .\.venv\Scripts\python.exe src/pipeline.py
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m pytest -v
 ```
 
 Se a `.venv` já existir, pule sua criação. Não é necessário ativá-la ao usar
@@ -66,7 +82,7 @@ src/refine.py          Executa e valida refined
 src/marts.py           Executa e valida marts
 src/pipeline.py        Executa as três etapas em ordem
 sql/refined.sql       Conversões e consolidação por pedido
-sql/marts.sql         Indicadores analíticos
+sql/marts/            Um arquivo SQL por indicador
 tests/                Testes com dados fictícios em memória
 ```
 
@@ -96,7 +112,7 @@ Após a ingestão:
 
 ```powershell
 .\.venv\Scripts\python.exe src/refine.py
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m pytest -v
 ```
 
 O SQL fica em `sql/refined.sql`; o Python executa a transformação e valida
@@ -122,10 +138,10 @@ Após a camada refined:
 
 ```powershell
 .\.venv\Scripts\python.exe src/marts.py
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m pytest -v
 ```
 
-O SQL está em `sql/marts.sql`. As tabelas são recriadas em uma transação:
+Cada indicador tem seu arquivo em `sql/marts/`. As tabelas são recriadas em uma transação:
 
 - `marts.installments_by_value`: quantidade de pedidos com cartão, quantidade
   parcelada e taxa percentual por faixa do total pago pelo pedido.
@@ -164,3 +180,51 @@ Dos 99.440 pedidos com pagamento, 74.259 usam somente cartão de crédito e
 mais frequente é cartão de crédito com voucher (2.245 pedidos); há também
 um pedido com cartão de crédito e débito. A série contém 25 meses com pedidos,
 de setembro de 2016 a outubro de 2018.
+
+## Diferenças em relação ao curso
+
+Referência: [Aula 1](https://ckoliveiraa.github.io/pipeline-olist/aula-1.html),
+[Aula 2](https://ckoliveiraa.github.io/pipeline-olist/aula-2.html),
+[Aula 3](https://ckoliveiraa.github.io/pipeline-olist/aula-3.html) e
+[Aula 4](https://ckoliveiraa.github.io/pipeline-olist/aula-4.html).
+
+O curso trabalha vendas por mês, categorias, entrega, avaliações, recompra
+e outros indicadores. Seu `mix_pagamento` mede participação do valor por
+tipo de pagamento em pedidos válidos. Este projeto usa dois arquivos para
+investigar parcelamento e combinações de meios no nível do pedido:
+
+| Indicador próprio | Pergunta | SQL |
+| --- | --- | --- |
+| Parcelamento por faixa | Entre pedidos com cartão, como a taxa varia com o total pago? | `sql/marts/01_installments_by_value.sql` |
+| Combinações | Quais conjuntos de meios ocorrem no mesmo pedido e em quantos pedidos pagos? | `sql/marts/02_payment_combinations.sql` |
+| Evolução mensal | Como varia a taxa de parcelamento entre pedidos com cartão ao longo dos meses de compra? | `sql/marts/03_monthly_payments.sql` |
+
+A transformação específica reúne todos os pagamentos por pedido, identifica
+cartão parcelado e ordena os meios distintos antes de juntar aos pedidos.
+Mantém todos os status e sinaliza pedidos sem pagamento. O total pago não
+é chamado de receita de produtos e inclui todos os meios do pedido.
+
+## Uso da IA e conferência
+
+- **Testes:** a IA adotou `unittest` embora o desafio exigisse `pytest`.
+  A diferença foi identificada ao comparar a implementação com o enunciado
+  fornecido pelo aluno. Foram adicionadas dependências de desenvolvimento e
+  configuração; os quatro testes passaram executados por `pytest`, com dados
+  inventados e DuckDB em memória, sem abrir o banco local.
+- **Contagem na ingestão:** a primeira conferência automatizada da IA falhou
+  porque assumiu que a primeira linha física do CSV de pedidos era o cabeçalho.
+  Havia uma linha vazia inicial. A inspeção mostrou o problema; a conferência
+  passou a ignorar linhas vazias antes de identificar o cabeçalho. As contagens
+  de registros coincidiram com a carga: 99.441 pedidos e 103.886 pagamentos.
+  O CSV original não foi editado.
+- **Transformação:** as conferências executadas pela IA mantiveram 99.441
+  pedidos antes e depois do JOIN e preservaram a soma dos pagamentos. Um pedido
+  sem pagamento foi mantido com total nulo; não foi descartado nem tratado
+  como compra gratuita. O aluno acompanhou os resultados informados no chat;
+  isso não equivale a uma auditoria independente de todas as regras.
+- **Decisões e histórico:** a IA definiu faixas de valor e inclusão de todos
+  os status; essas escolhas estão documentadas e foram apresentadas ao aluno.
+  Também concentrou a implementação em um commit, contrariando o histórico
+  por etapa pedido no desafio. A limitação foi identificada na revisão dos
+  requisitos com `git log`; o histórico original foi preservado, sem simular
+  uma construção por etapas que não ficou registrada.
