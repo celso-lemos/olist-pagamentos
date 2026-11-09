@@ -2,6 +2,11 @@
 
 Projeto desenvolvido para o desafio final da Aula 4.
 
+**[Abrir o dashboard público](https://olist-pagamentos-axm698tegwcqo9xwpxzkly.streamlit.app/)**
+
+Painel hospedado no Streamlit Community Cloud, com indicadores agregados
+de parcelamento e formas de pagamento.
+
 ## Pergunta do projeto
 
 Pedidos de maior valor são parcelados com mais frequência entre as compras
@@ -261,7 +266,7 @@ subdomínio na plataforma antes de divulgar um endereço.
 
 Após **Deploy**, confira as três visões e o download do JSON. Caso haja erro,
 consulte o log da instalação/execução antes de alterar dependências.
-O endereço público só deve ser incluído aqui depois da implantação confirmada.
+O endereço público informado após a implantação está no início deste README.
 Mudanças futuras no código ou nos indicadores precisam de commit e push
 para atualizar a versão hospedada. As instruções seguem a
 [documentação de implantação](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy).
