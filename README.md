@@ -223,7 +223,27 @@ Para atualizar apenas a exportação após gerar os marts:
 A exportação usa um snapshot das três tabelas. O arquivo final só é
 substituído após a leitura e serialização completas. Não há cálculos de
 indicadores nessa etapa, somente leitura ordenada e serialização.
-O dashboard em Streamlit será implementado na próxima etapa.
+## Dashboard em Streamlit
+
+O painel lê somente `data/published/dashboard.json`, exportado da camada
+marts. Não abre o banco nem lê os CSVs originais. Não calcula taxas, somas ou
+médias: apenas apresenta os indicadores prontos. A navegação troca entre
+parcelamento por valor, combinações de pagamento e evolução mensal.
+Gráficos têm tooltips; tabelas permitem conferir os valores; o arquivo de
+indicadores pode ser baixado pelo painel.
+
+Para abrir localmente, na raiz do projeto:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+Abra o endereço informado no terminal (normalmente `http://localhost:8501`).
+Use `Ctrl+C` no terminal para encerrar. O painel funciona com o arquivo
+agregado versionado, mesmo sem os dados originais e sem executar o pipeline.
+Os testes de interface usam dados fictícios e `streamlit.testing.v1.AppTest`.
+A hospedagem pública do aplicativo será preparada em uma etapa separada.
 
 ## Uso da IA e conferência
 
